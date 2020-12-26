@@ -1,0 +1,138 @@
+package com.example.prayer_times;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Map;
+
+public class details extends AppCompatActivity {
+    TextView tv,city;
+    String cit;
+    TextView fajar,duhar,asar,maghrib,isha;
+    ImageView fajarPtr,duharPtr,asarPtr,maghribPtr,ishaPtr;
+    String fjr,dhr,asr,mghrb,ish;
+    ImageButton playButton;
+    LinearLayout layout;
+    ImageView cityPic;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_details);
+        cityPic=findViewById(R.id.cityPic);
+        fajarPtr=findViewById(R.id.fajar_ptr);
+        duharPtr=findViewById(R.id.duhar_ptr);
+        asarPtr=findViewById(R.id.asar_ptr);
+        maghribPtr=findViewById(R.id.maghrib_ptr);
+        ishaPtr=findViewById(R.id.ishaPtr);
+        city=findViewById(R.id.tv_selectedCity);
+        fajar=findViewById(R.id.fjrtime);
+        duhar=findViewById(R.id.zhrtime);
+        asar=findViewById(R.id.asrtime);
+        maghrib=findViewById(R.id.mghrbtime);
+        isha=findViewById(R.id.ishatime);
+        layout=findViewById(R.id.prayerTimesLayout);
+
+
+
+        playButton=findViewById(R.id.adhanPlay);
+        final Intent intent=getIntent();
+        String intentCity=intent.getStringExtra("city");
+
+        city.setText(intentCity);
+        tv=findViewById(R.id.info);
+         cit=city.getText().toString();
+         if(intentCity.equals("Abu Dhabi")){
+             cityPic.setImageURI();
+         }
+
+
+        new MyTask().execute();
+
+
+
+
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startService(new Intent(details.this,AdhanService.class));
+
+            }
+        });
+
+
+    }
+
+    private class MyTask extends AsyncTask<Void, Void, Void> {
+        String result;
+        ProgressDialog progressDialog;
+
+        HttpResponse<String> response;
+        public MyTask(){
+            progressDialog=new ProgressDialog(details.this);
+        }
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setMessage("Doing something, please wait.");
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            try {
+
+                progressDialog.show();;
+
+                response = Unirest.get("https://aladhan.p.rapidapi.com/timingsByCity?city="+cit+"&country=uae")
+                        .header("x-rapidapi-key", "c6e70037a0mshe9d19d275a12732p157066jsn01184d9f8e13")
+                        .header("x-rapidapi-host", "aladhan.p.rapidapi.com")
+                        .asString();
+                Log.d("Responce",response.getBody());
+
+            } catch (UnirestException e) {
+                e.printStackTrace();
+                result = e.toString();
+                Log.d("Error",result);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            String map=response.getBody();
+            Log.d("Reponse",map.substring(45,50));
+            fjr=map.substring(53,58);
+            Log.d("Fajarrr",map.substring(53,58));
+            Log.d("Duhar",map.substring(87,92));
+            dhr=map.substring(87,92);
+            Log.d("Asar",map.substring(101,106));
+            asr=map.substring(101,106);
+            Log.d("Maghrb",map.substring(136,141));
+            mghrb=map.substring(136,141);
+            Log.d("Isha",map.substring(151,156));
+            ish=map.substring(151,156);
+            fajar.setText(fjr);
+            duhar.setText(dhr);
+            asar.setText(asr);
+            maghrib.setText(mghrb);
+            isha.setText(ish);
+            progressDialog.dismiss();
+            Date time= Calendar.getI

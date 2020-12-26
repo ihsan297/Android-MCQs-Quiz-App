@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#B3EAF0"
+    tools:context=".gameActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: "
+            android:textSize="20dp"
+            android:textColor="#141414"
+
+            ></TextView>
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="0"
+            android:textSize="20dp"
+            android:textColor="#D81B60"
+            ></TextView>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question: "
+            android:textSize="15dp"
+            android:textColor="#111010"
+
+            ></TextView>
+        <TextView
+            android:id="@+id/numbering"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="0"
+            android:textSize="14dp"
+            ></TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/quesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is question akk aksm kmd akmsd ad"
+        android:textSize="25dp"
+        android:textColor="#131212"
+        android:textAlignment="center"
+        ></TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        >
+
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radGrp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="#76FF03"
+        >
+        <RadioButton
+            android:id="@+id/optA"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:text="This is option a "
+            ></RadioButton>
+
+        <RadioButton
+            android:id="@+id/optB"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:text="This is option b "
+            ></RadioButton>
+        <RadioButton
+            android:id="@+id/optC"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:text="This is option c "
+            ></RadioButton>
+
+        <RadioButton
+            android:id="@+id/optD"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:text="This is option d "
+            ></RadioButton>
+
+    </RadioGroup>
+
+
+    <TextView
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:layout_marginTop="14dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="#D81B60"
+        android:textAlignment="center"
+        ></TextView>
+
+
+
+</LinearLayout>

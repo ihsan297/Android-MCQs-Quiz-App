@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#B3EAF0"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:textSize="45dp"
+        android:layout_marginTop="100dp"
+        android:textColor="#F50057"
+
+        android:text="Who Wants to Be a Millionaire"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:textColor="#2979FF"
+
+            android:text="Your overall score is: "
+
+
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scr"
+
+            android:textSize="25dp"
+            android:text="NIL."
+            android:textColor="#D81B60"
+            ></TextView>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/startGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Game ->"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:textStyle="italic"
+        android:textSize="40dp"
+        android:textColor="#0A0A0A"
+        android:textAlignment="center"
+        ></TextView>
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Message"
+        android:textSize="40dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        ></TextView>
+
+</LinearLayout>
